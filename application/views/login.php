@@ -53,7 +53,6 @@
         contraseña:contraseña
       },
       success: function(data){
-        alert(data.log);
         if(data.log == true){
           window.location.href = '<?= base_url('administrador')?>';
         }else{

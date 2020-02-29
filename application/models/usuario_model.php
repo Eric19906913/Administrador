@@ -44,16 +44,15 @@ class usuario_model extends CI_Model{
     $dato = $this->db->get($this->table);
     $resultado = $dato->num_rows();
     if($resultado == 1){
-      $pass_cypher = password_hash($contraseña, PASSWORD_BCRYPT, ['cost'=>4]);
       $data = array(
         'usuario' =>$dato->result()[0]->usuario,
         'email' =>$dato->result()[0]->email,
-        'contraseña'=>$pass_cypher
+        'contraseña'=>$contraseña
       );
       $this->db->set($data);
       $this->db->where('usuario',$usuario);
-      //$this->db->where('email',$email);
-      $this->db->insert($this->table);
+      $this->db->where('email',$email);
+      $this->db->update($this->table);
       return $resultado;
     }else{
       return $resultado;
