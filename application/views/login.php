@@ -52,12 +52,16 @@
         usuario:usuario,
         contraseña:contraseña
       },
-      success: function(nombre){
+      success: function(data){
+        alert(data.log);
+        if(data.log == true){
+          window.location.href = '<?= base_url('administrador')?>';
+        }else{
         swal({
-          title:'Bienvenido '+nombre,
-          icon: 'success'
+          title: data.mensaje,
+          icon: 'warning'
           });
-          window.location.href = '<?php echo base_url() ?>direccion'
+        }
       },
       error: function(){
         swal({

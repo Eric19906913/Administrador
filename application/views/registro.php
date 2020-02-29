@@ -31,7 +31,7 @@
               <input type="password" class="form-control" id="confirmacontraseña" placeholder="Confirmar contraseña">
             </div>
             <div class="forgot">
-              <a href="/direccion">Salir</a>
+              <a href="<?=base_url('administrador')?>">Salir</a>
             </div>
             <button type="button" class="btn btn-primary" name="button" onclick="registro()">Registrar</button>
           </form>
@@ -66,18 +66,23 @@
         contraseña:contraseña
 
       },
-      success: function(){
-        swal({
-          title:'Usuario creado con exito ',
-          icon: 'success'
+      success: function(data){
+        datalert = JSON.parse(data);
+        if(datalert.creado == true){
+          swal({
+            title:datalert.mensaje,
+            icon: 'success'
+          });  
+        }else{
+          swal({
+            title:datalert.mensaje,
+            icon: 'warning'
           });
+        }
+        
       },
       error: function(){
-        swal({
-          title: 'El usuario que intenta crear ya existe',
-          icon: 'warning'
-        });
-
+        alert('Error');
       },
     });
 

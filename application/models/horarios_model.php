@@ -63,6 +63,7 @@ class Horarios_model extends CI_Model{
   {//Busca elementos por ID en la BDD recibiendo como parametro el ID
       $this->db->from($this->table);
       $this->db->where('id',$id);
+      //SELECT * FROM TABLE WHERE ID = ID;
       $query = $this->db->get();
 
       return $query->row();

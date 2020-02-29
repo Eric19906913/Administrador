@@ -2,12 +2,12 @@
 <html lang="en" dir="ltr">
   <head>
     <?php
-
-      if(!isset($_SESSION['username'])){
-        header('Location: home');
+    //Verificaion de usuario
+      if(!isset($_SESSION['usuario'])){
+        //header('Location: home');
       }else{
         $this->session;
-        $nombre = $this->session->userdata('username');
+        $nombre = $this->session->userdata('usuario');
       }
       include_once('Assets/header.php');
      ?>
@@ -28,7 +28,7 @@
             <a class="nav-link" href="administrador/registro">Registrar usuario</a>
           </li>
           <li>
-            <a class="navbar-brand" href="desconectar">Salir</a>
+            <button onclick="logout()"><a class="navbar-brand">Salir</a></button>
           </li>
           <li>
             <button class="btn btn-default" onclick="reload_table()"><i class="fas fa-redo"></i></button>
@@ -113,6 +113,7 @@
                   swal("Aviso", "Datos eliminados con éxito.", "success");
                   //if success reload ajax table
 
+
                   reload_table();
               },
               error: function (jqXHR, textStatus, errorThrown)
@@ -170,6 +171,18 @@
           });
         });
 
+      }
+      function logout(){
+        $.ajax({
+          type:'POST',
+          url: '<?=base_url('administrador/logout')?>',
+          success:function(){
+            window.location.href = '<?=base_url('/home')?>' 
+          },
+          error:function(){
+            alert('todo roto');
+          },
+        })
       }
 
   </script>

@@ -66,18 +66,23 @@
         contraseña:contraseña
 
       },
-      success: function(){
-        swal({
-          title:'Contraseña actualizada con exito!',
-          icon: 'success'
+      success: function(data){
+        var datalert = JSON.parse(data);
+        if(datalert.cambio == true){
+          swal({
+            title:datalert.mensaje,
+            icon: 'success'
+          });  
+        }else{
+          swal({
+            title:datalert.mensaje,
+            icon: 'warning'
           });
+        }
+        
       },
       error: function(){
-        swal({
-          title: 'Ocurrio un error inesperado!',
-          icon: 'warning'
-        });
-
+        alert('Error');
       },
     });
 
