@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <?php include_once('Assets/header.php') ?>
+    <?php require_once('includes/header.php') ?>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -25,7 +25,7 @@
               <input type="password" class="form-control" id="contraseña" placeholder="Contraseña">
             </div>
             <div class="forgot">
-              <a href="home/resetPass">Olvido su contraseña?</a>
+              <a href="<?=base_url('home/resetPass') ?>">Olvido su contraseña?</a>
             </div>
             <button type="button" class="btn btn-primary" name="button" onclick="login()">Ingresar</button>
           </form>

@@ -4,34 +4,31 @@
     <?php
     //Verificaion de usuario
       if(!isset($_SESSION['usuario'])){
-        //header('Location: home');
+        header('Location: home');
       }else{
         $this->session;
         $nombre = $this->session->userdata('usuario');
       }
-      include_once('Assets/header.php');
+      require_once('includes/header.php');
      ?>
     <meta charset="utf-8">
-    <title>Perfil de <?php echo $nombre ?></title>
+    <title>Perfil de <?= $nombre ?></title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Inicio<span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="#" style="margin-right: 50px"><strong>Inicio</strong><span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="administrador/registro">Registrar usuario</a>
+            <a class="nav-link" href="administrador/registro" style="color:blue"><i class="fas fa-user-plus"></i> Registrar usuario</a>
           </li>
           <li>
-            <button onclick="logout()"><a class="navbar-brand">Salir</a></button>
-          </li>
-          <li>
-            <button class="btn btn-default" onclick="reload_table()"><i class="fas fa-redo"></i></button>
+            <a href="<?=base_url('administrador/logout')?>" class="nav-link" style="color:red"><i class="fas fa-sign-out-alt"></i> Salir</a>
           </li>
 
         </ul>
@@ -41,9 +38,10 @@
 
     <br>
     <br>
-
+    <button class="btn btn-default" style="color:green; margin-left: 87%; margin-bottom: 10px" onclick="reload_table()">Recargar Tabla <i class="fas fa-redo"></i></button>
     <div class="" id='Hora'>
       <table id="horarios" class="table table-striped table-bordered" cellspacing="0" width="100%">
+        
         <thead>
           <th>DNI</th>
           <th>Nombre</th>

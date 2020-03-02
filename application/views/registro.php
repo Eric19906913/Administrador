@@ -1,12 +1,20 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <?php include_once('Assets/header.php') ?>
+    <?php require_once('includes/header.php');
+    if(!isset($_SESSION['usuario'])){
+      header("Location: home");
+    }else{
+      $this->session;
+      $nombre = $_SESSION['usuario'];
+    }
+
+    ?>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="<?php base_url('Assets/estilo.css') ?>" type="text/css">
-    <title>Bienvenido!</title>
+    <!--<link rel="stylesheet" href="<?php base_url('assets/css/estilo.css') ?>" type="text/css">-->
+    <title>Bienvenido <?=$nombre ?>!</title>
   </head>
   <body id="LoginForm">
     <div class="container">
